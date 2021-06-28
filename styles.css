@@ -1,0 +1,24 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1em;
+  background-color: black;
+  color: white;
+}
+
+body input {
+  padding: 2px 8px;
+  font-size: 18px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+body span {
+  font-family: monospace;
+  font-size: 18px;
+  text-transform: capitalize;
+}
