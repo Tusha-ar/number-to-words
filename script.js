@@ -70,7 +70,12 @@ function getTwoDigitNumber(num) {
   }
   else {
     let word = ""
-    word = twoDigitWithZero(num - String(num)[1])
+    if (String(num)[1])
+      word = twoDigitWithZero(num - String(num)[1])
+    else {
+      word = getUnitNumbers(String(num)[0])
+      return word
+    }
     word += " "
     word += getUnitNumbers(String(num)[1])
     return word
@@ -97,7 +102,10 @@ function getFourToFiveDigitNumber(num) {
     const processedNum = String(num).split('')
     processedNum.shift()
     if (Number(processedNum.join("") == 0)) return word
-    word += getThreeDigitNumber(Number(processedNum.join("")))
+    if (Number(processedNum.join("")) < 100)
+      word += getTwoDigitNumber(Number(processedNum.join("")))
+    else
+      word += getThreeDigitNumber(Number(processedNum.join("")))
   }
   else {
     word += getTwoDigitNumber(Number(String(num)[0] + String(num)[1]))
@@ -106,7 +114,10 @@ function getFourToFiveDigitNumber(num) {
     processedNum.shift()
     processedNum.shift()
     if (Number(processedNum.join("") == 0)) return word
-    word += getThreeDigitNumber(Number(processedNum.join("")))
+    if (Number(processedNum.join("")) < 100)
+      word += getTwoDigitNumber(Number(processedNum.join("")))
+    else
+      word += getThreeDigitNumber(Number(processedNum.join("")))
   }
   return word
 }
@@ -119,7 +130,10 @@ function getSixToSevenDigitNumber(num) {
     const processedNum = String(num).split('')
     processedNum.shift()
     if (Number(processedNum.join("") == 0)) return word
-    word += getFourToFiveDigitNumber(Number(processedNum.join("")))
+    if (Number(processedNum.join("")) < 100)
+      word += getTwoDigitNumber(Number(processedNum.join("")))
+    else
+      word += getFourToFiveDigitNumber(Number(processedNum.join("")))
   }
   else {
     word += getTwoDigitNumber(Number(String(num)[0] + String(num)[1]))
@@ -128,7 +142,10 @@ function getSixToSevenDigitNumber(num) {
     processedNum.shift()
     processedNum.shift()
     if (Number(processedNum.join("") == 0)) return word
-    word += getFourToFiveDigitNumber(Number(processedNum.join("")))
+    if (Number(processedNum.join("")) < 100)
+      word += getTwoDigitNumber(Number(processedNum.join("")))
+    else
+      word += getFourToFiveDigitNumber(Number(processedNum.join("")))
   }
   return word
 }
@@ -141,7 +158,10 @@ function getOverSeven(num) {
     const processedNum = String(num).split('')
     processedNum.shift()
     if (Number(processedNum.join("") == 0)) return word
-    word += getSixToSevenDigitNumber(Number(processedNum.join("")))
+    if (Number(processedNum.join("")) < 100)
+      word += getTwoDigitNumber(Number(processedNum.join("")))
+    else
+      word += getSixToSevenDigitNumber(Number(processedNum.join("")))
   }
   else if (num <= 999999999) {
     word += getTwoDigitNumber(Number(String(num)[0] + String(num)[1]))
@@ -150,7 +170,10 @@ function getOverSeven(num) {
     processedNum.shift()
     processedNum.shift()
     if (Number(processedNum.join("") == 0)) return word
-    word += getSixToSevenDigitNumber(Number(processedNum.join("")))
+    if (Number(processedNum.join("")) < 100)
+      word += getTwoDigitNumber(Number(processedNum.join("")))
+    else
+      word += getSixToSevenDigitNumber(Number(processedNum.join("")))
   }
   else if (num > 999999999 && num <= 9999999999) {
     word += getThreeDigitNumber(Number(String(num)[0] + String(num)[1] + String(num)[2]))
@@ -160,7 +183,10 @@ function getOverSeven(num) {
     processedNum.shift()
     processedNum.shift()
     if (Number(processedNum.join("") == 0)) return word
-    word += getSixToSevenDigitNumber(Number(processedNum.join("")))
+    if (Number(processedNum.join("")) < 100)
+      word += getTwoDigitNumber(Number(processedNum.join("")))
+    else
+      word += getSixToSevenDigitNumber(Number(processedNum.join("")))
   }
   else {
     word = "Sorry, works till 999,99,99,999 😅"
